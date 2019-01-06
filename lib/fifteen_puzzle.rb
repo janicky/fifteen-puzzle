@@ -1,4 +1,3 @@
-require "fifteen_puzzle_solver"
 require "colorize"
 require_relative "service"
 

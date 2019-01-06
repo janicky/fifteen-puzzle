@@ -1,3 +1,5 @@
+require "fifteen_puzzle_solver"
+
 class Service
   def initialize(params)
     # Assign params
@@ -12,14 +14,27 @@ class Service
     # from input file
     read_input
 
-    puts @blocks.inspect
+    # Start solver
+    start
   end
 
   private
 
+  def start
+    solver_params = {
+      blocks: @blocks,
+      width: @width,
+      height: @height,
+      algorithm: @algorithm,
+      acronym: @acronym,
+    }
+    fps = FifteenPuzzleSolver.new(solver_params)
+    fps.perform
+  end
+
   def read_input
     input = File.open(@input_file).to_a
-    @width, @height = input.first.strip.split(" ")
+    @width, @height = input.first.strip.split(" ").map(&:to_i)
     @blocks = []
     input.each_with_index do |line, index|
       next if index == 0
