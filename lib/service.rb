@@ -32,6 +32,11 @@ class Service
     fps = FifteenPuzzleSolver.new(solver_params)
     fps.perform
 
+    # Save solution report
+    solution_report = Report.new("solution", @solution_file, fps.result)
+    solution_report.save
+
+    # Save stats report
     stats_report = Report.new("stats", @stats_file, fps.result)
     stats_report.save
   end
