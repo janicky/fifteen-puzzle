@@ -7,7 +7,7 @@ class FifteenPuzzle
     if params.count == 5
       begin
         Service.new(params)
-      rescue => exception
+      rescue Exception => exception
         puts exception.message.red
       end
     else
