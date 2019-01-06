@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/janicky/fifteen-puzzle-solver
+  revision: e570fc033af99c9e37b7e4176596d466b26e33cd
+  specs:
+    fifteen-puzzle-solver (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -23,6 +29,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  fifteen-puzzle-solver!
   rubocop (~> 0.62.0)
 
 BUNDLED WITH
