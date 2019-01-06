@@ -1007,7 +1007,7 @@ Lint/RequireParentheses:
 Lint/RescueException:
   Description: Avoid rescuing the Exception class.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-blind-rescues
-  Enabled: true
+  Enabled: false
 Lint/ShadowingOuterLocalVariable:
   Description: Do not use the same name as outer local variable for block arguments
     or block local variables.
