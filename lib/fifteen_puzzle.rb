@@ -5,7 +5,11 @@ require_relative "service"
 class FifteenPuzzle
   def initialize(params)
     if params.count == 5
-      Service.new(params)
+      begin
+        Service.new(params)
+      rescue => exception
+        puts exception.message.red
+      end
     else
       usage
     end
