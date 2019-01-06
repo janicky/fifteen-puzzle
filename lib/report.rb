@@ -19,7 +19,7 @@ class Report
   def save_solution
     file = File.new(@filename, "w")
     file.puts @data.status == "solved" ? @data.solution.length : -1
-    file.puts @data.solution if @data.status == "solved"
+    file.puts @data.solution.upcase if @data.status == "solved"
     file.close
   end
 
