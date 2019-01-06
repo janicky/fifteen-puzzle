@@ -1,25 +1,17 @@
+require "fifteen_puzzle_solver"
 require "colorize"
+require_relative "service"
 
 class FifteenPuzzle
   def initialize(params)
-    init(params)
-
-    # Assign params
-    vars = %w[algorithm acronym input_file results_file stats_file]
-    vars.each_with_index do |value, index|
-      instance_variable_set("@#{value}".to_sym, params[index])
+    if params.count == 5
+      Service.new(params)
+    else
+      usage
     end
-    validate
   end
 
   private
-
-  def init(params)
-    # Validate params count and display usage
-    return usage unless params.count == 4
-  end
-
-  def validate; end
 
   def usage
     puts "Usage: fifteen-puzzle [algorithm] [heuristic/order] "\
@@ -30,5 +22,4 @@ class FifteenPuzzle
       "(hamming)"
     puts "Order (only bfs/dfs): #{'[udlr]'.green} permutations, e.g. rlud, dlru"
   end
-
 end
