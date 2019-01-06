@@ -6,6 +6,15 @@ class Service
       instance_variable_set("@#{value}".to_sym, params[index])
     end
 
-    puts @algorithm
+    validate
+  end
+
+  private
+
+  def validate
+    # Validate input file
+    unless File.exists?(@input_file)
+      raise Exception.new("Input file not found")
+    end
   end
 end
