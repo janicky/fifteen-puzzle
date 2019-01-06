@@ -1,4 +1,5 @@
 require "fifteen_puzzle_solver"
+require_relative "report"
 
 class Service
   def initialize(params)
@@ -30,6 +31,9 @@ class Service
     }
     fps = FifteenPuzzleSolver.new(solver_params)
     fps.perform
+
+    stats_report = Report.new("stats", @stats_file, fps.result)
+    stats_report.save
   end
 
   def read_input
