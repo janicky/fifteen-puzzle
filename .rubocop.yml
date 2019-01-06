@@ -1070,3 +1070,5 @@ Rails/UnknownEnv:
     - production
 Style/FrozenStringLiteralComment:
   Enabled: false
+Style/RescueStandardError:
+  Enabled: false
