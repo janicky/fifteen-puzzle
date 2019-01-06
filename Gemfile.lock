@@ -8,6 +8,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.0)
+    colorize (0.8.1)
     jaro_winkler (1.5.2)
     parallel (1.12.1)
     parser (2.5.3.0)
@@ -29,6 +30,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  colorize (~> 0.8.1)
   fifteen-puzzle-solver!
   rubocop (~> 0.62.0)
 
