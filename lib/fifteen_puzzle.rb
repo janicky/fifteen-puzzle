@@ -2,20 +2,24 @@ require "colorize"
 
 class FifteenPuzzle
   def initialize(params)
-    init
+    init(params)
+
     # Assign params
-    params.each do |key, value|
-      instance_variable_set("@#{key}".to_sym, value)
+    vars = %w[algorithm acronym input_file results_file stats_file]
+    vars.each_with_index do |value, index|
+      instance_variable_set("@#{value}".to_sym, params[index])
     end
     validate
   end
 
   private
 
-  def init
+  def init(params)
     # Validate params count and display usage
     return usage unless params.count == 4
   end
+
+  def validate; end
 
   def usage
     puts "Usage: fifteen-puzzle [algorithm] [heuristic/order] "\
@@ -27,5 +31,4 @@ class FifteenPuzzle
     puts "Order (only bfs/dfs): #{'[udlr]'.green} permutations, e.g. rlud, dlru"
   end
 
-  def validate; end
 end
