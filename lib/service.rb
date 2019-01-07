@@ -1,4 +1,5 @@
 require "fifteen_puzzle_solver"
+require "colorize"
 require_relative "report"
 
 class Service
@@ -8,6 +9,12 @@ class Service
     vars.each_with_index do |value, index|
       instance_variable_set("@#{value}".to_sym, params[index])
     end
+
+    # Set files valid directories
+    @filename = @input_file
+    @input_file = "../data/#{@input_file}"
+    @solution_file = "../data/#{@solution_file}"
+    @stats_file = "../data/#{@stats_file}"
 
     validate
 
@@ -39,6 +46,8 @@ class Service
     # Save stats report
     stats_report = Report.new("stats", @stats_file, fps.result)
     stats_report.save
+
+    puts "Finished #{@filename} in #{(fps.result.elapsed_time * 1000).round(3)} ms".green
   end
 
   def read_input
