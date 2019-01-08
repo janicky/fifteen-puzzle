@@ -28,7 +28,7 @@ class Report
     file.puts @data.status == "solved" ? @data.solution.length : -1
     file.puts @data.visited_nodes
     file.puts @data.processed_nodes
-    file.puts @data.depth
+    file.puts @data.max_depth
     file.puts (@data.elapsed_time * 1000).round(3)
     file.close
   end
