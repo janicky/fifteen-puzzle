@@ -36,6 +36,11 @@ class Service
       algorithm: @algorithm,
       acronym: @acronym,
     }
+
+    File.open("../data/logs.txt", "a") do |f|
+      f.write("===============\nStarted #{@filename} - #{@algorithm} / #{@acronym} at #{time}\n")
+    end
+
     fps = FifteenPuzzleSolver.new(solver_params)
     fps.perform
 
@@ -47,7 +52,21 @@ class Service
     stats_report = Report.new("stats", @stats_file, fps.result)
     stats_report.save
 
-    puts "Finished #{@filename} in #{(fps.result.elapsed_time * 1000).round(3)} ms".green
+    finished = "Finished #{@filename} - #{@algorithm} / #{@acronym} "\
+      "in #{to_ms(fps.result.elapsed_time)} ms"
+
+    puts finished.green
+    File.open("../data/logs.txt", "a") do |f|
+      f.write("#{finished}\n")
+    end
+  end
+
+  def time
+    Time.now.strftime("%d-%m-%Y %H:%M:%S")
+  end
+
+  def to_ms(time)
+    (time * 1000).round(3)
   end
 
   def read_input
