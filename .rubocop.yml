@@ -15,7 +15,7 @@ AllCops:
   DisplayCopNames: true
   StyleGuideCopsOnly: false
 Rails:
-  Enabled: true
+  Enabled: false
 Layout/AccessModifierIndentation:
   Description: Check indentation of private/protected visibility modifiers.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#indent-public-private-protected
